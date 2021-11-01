@@ -2,7 +2,7 @@
     <app-layout title="Dashboard">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Your exercise goal for today
+                Make physical exercise an everyday habit  
             </h2>
         </template>
 
@@ -16,9 +16,7 @@
 
         <div class="goalListContainer">
             <div class="heading">
-                 <h2 id="title">
-                     Goal List
-                </h2>
+               
                 <add-goal-form 
                 v-on:reloadlist="getList()"/>
                 
