@@ -26,3 +26,6 @@ Route::prefix('/goal')->group(function(){
         Route::delete('/{id}',[GoalController::class, 'destroy']);
     }
 );
+
+Route::get('/points', [PointController::class, 'show']);
+Route::put('/points', [PointController::class, 'update']);
