@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoalController;
+use App\Http\Controllers\PointController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,5 @@ Route::prefix('/goal')->group(function(){
     }
 );
 
-Route::get('/points', [PointController::class, 'show']);
+Route::get('/points', [PointController::class, 'index']);
 Route::put('/points', [PointController::class, 'update']);

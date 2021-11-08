@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Point;
 
 class PointController extends Controller
 {
@@ -14,7 +15,7 @@ class PointController extends Controller
      */
     public function index()
     {
-       
+       return Point::all();
     }
 
     /**
