@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\GoalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +38,13 @@ Route::middleware('auth:sanctum')->get('/chat/rooms',[ChatController::class,'roo
 Route::middleware('auth:sanctum')->get('/chat/room/{roomID}/messages',[ChatController::class,'message']);
 Route::middleware('auth:sanctum')->post('/chat/room/{roomID}/message',[ChatController::class,'newMessage']);
 
+Route::middleware('auth:sanctum')->get('/goals', [GoalController::class, 'index']);
+Route::middleware('auth:sanctum')->prefix('/goal')->group(function(){
+        Route::post('/store',[GoalController::class, 'store']);
+        Route::put('/{id}',[GoalController::class, 'update']);
+        Route::delete('/{id}',[GoalController::class, 'destroy']);
+    }
+);
+
+Route::middleware('auth:sanctum')->get('/points', [PointController::class, 'index']);
+Route::middleware('auth:sanctum')->put('/points', [PointController::class, 'update']);

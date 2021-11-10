@@ -49,7 +49,7 @@
         },
         methods: {
             getList(){
-                axios.get('api/goals')
+                axios.get('goals')
                 .then( response => {
                     this.goals = response.data
                 })

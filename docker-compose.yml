@@ -6,13 +6,17 @@ services:
         links:
           - mysql:mysql
         ports:
-          - 8080:80
+          - '${FORWARD_PHPMYADMIN_PORT:-8888}:80'
         environment:
           MYSQL_USERNAME: "${DB_USERNAME}"
           MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
           PMA_HOST: mysql
+          PMA_ABSOLUTE_URI: 'http://localhost:${FORWARD_PHPMYADMIN_PORT:-8888}/'
         networks:
           - sail
+        volumes:
+            - 'sailphpmyadmin:/sessions'
+       
     laravel.test:
         build:
             context: ./vendor/laravel/sail/runtimes/8.0
@@ -102,4 +106,6 @@ volumes:
     sailredis:
         driver: local
     sailmeilisearch:
+        driver: local
+    sailphpmyadmin:
         driver: local

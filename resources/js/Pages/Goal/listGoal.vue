@@ -19,7 +19,7 @@ export default {
     props: ['goal'],
     methods:{
         updateCheck(){
-            axios.put('api/goal/' + this.goal.id, {
+            axios.put('goal/' + this.goal.id, {
                 goal: this.goal
             })
             .then(response => {
@@ -32,7 +32,7 @@ export default {
             })
         },
         removeGoal(){
-            axios.delete('api/goal/' + this.goal.id)
+            axios.delete('goal/' + this.goal.id)
             .then( response => {
                 if( response.status == 200){
                     this.$emit('goalchanged');

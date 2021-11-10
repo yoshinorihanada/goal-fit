@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoalController;
 use App\Http\Controllers\PointController;
+use Inertia\Inertia;
+use App\Http\Controllers\ChatController;
+use Illuminate\Foundation\Application;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +23,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/goals', [GoalController::class, 'index']);
-Route::prefix('/goal')->group(function(){
-        Route::post('/store',[GoalController::class, 'store']);
-        Route::put('/{id}',[GoalController::class, 'update']);
-        Route::delete('/{id}',[GoalController::class, 'destroy']);
-    }
-);
+// Route::middleware('auth:sanctum')->get('/goals', [GoalController::class, 'index']);
+// Route::middleware('auth:sanctum')->prefix('/goal')->group(function(){
+//         Route::post('/store',[GoalController::class, 'store']);
+//         Route::put('/{id}',[GoalController::class, 'update']);
+//         Route::delete('/{id}',[GoalController::class, 'destroy']);
+//     }
+// );
 
-Route::get('/points', [PointController::class, 'index']);
-Route::put('/points', [PointController::class, 'update']);
+// Route::middleware('auth:sanctum')->get('/points', [PointController::class, 'index']);
+// Route::middleware('auth:sanctum')->put('/points', [PointController::class, 'update']);

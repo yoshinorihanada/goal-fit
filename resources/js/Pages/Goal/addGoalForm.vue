@@ -81,8 +81,9 @@
                 if (this.goal.name == '') {
                     return;
                 }
+                
 
-                axios.post('api/goal/store', {
+                axios.post('goal/store', {
                         goal: this.goal
                     })
                     .then(response => {
