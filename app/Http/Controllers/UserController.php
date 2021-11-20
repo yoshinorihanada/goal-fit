@@ -15,7 +15,6 @@ class UserController extends Controller
     public function showPoint(){
         $user_id = Auth::id();
         $user = User::find($user_id);
-        Log::info($user);
         return $user->point;
         // return User::select('points')->get();
     }

@@ -5,6 +5,7 @@
                 :goal="goal"
                 class="goal"
                 v-on:goalchanged="$emit('reloadlist')"
+                v-on:pointchanged="$emit('reloadpoint')"
                 />
         </div>
     </div>

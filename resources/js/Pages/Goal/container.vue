@@ -9,7 +9,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <point-view :point="point" @pointchanged="getPoint"/>
+                    <point-view :point="point" @reloadpoint="getPoint"/>
                 </div>
             </div>
         </div>
@@ -21,8 +21,8 @@
                 
 
             </div>
-            <list-view :goals="goals"
-            @reloadlist="getList"/>
+            <list-view :goals="goals" 
+            @reloadlist="getList" @reloadpoint="getPoint"/>
            
         </div>
     </app-layout>

@@ -1,5 +1,5 @@
 <template>
-    <button v-on:click="addOnePoint()">click</button>
+    <!-- <button v-on:click="addOnePoint()">click</button> -->
     
     <div>
         Your current Point is <span style="color:blue">{{point}}</span>
@@ -17,19 +17,19 @@
             } 
         },
         methods:{
-            addFivePoint(){
-                axios.put('point', {
-                    point: this.point + 5
-                })
-                .then(response => {
-                    if(response.status == 200){
-                        this.$emit('pointchanged')
-                    }
-                })
-                .catch(error=>{
-                    console.log(error);
-                })
-            },
+            // addFivePoint(){
+            //     axios.put('point', {
+            //         point: this.point + 5
+            //     })
+            //     .then(response => {
+            //         if(response.status == 200){
+            //             this.$emit('pointchanged')
+            //         }
+            //     })
+            //     .catch(error=>{
+            //         console.log(error);
+            //     })
+            // },
             addOnePoint(){
             
                 axios.put('point',{

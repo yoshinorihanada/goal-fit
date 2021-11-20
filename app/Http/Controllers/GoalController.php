@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Goal;
+use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class GoalController extends Controller
 {
@@ -47,6 +49,9 @@ class GoalController extends Controller
         $newGoal->due_date = $request->goal["dueDate"];
         $newGoal->save();
 
+        
+        
+
         return $newGoal;
     }
 
@@ -86,8 +91,17 @@ class GoalController extends Controller
             $existingGoal->completed = $request->goal['completed'] ? true : false;
             $existingGoal->completed_at = $request->goal['completed'] ? Carbon::now() : null;
             $existingGoal->save();
+
+            // $user = Auth::user();
+            // $user->point = $user->point + 1;
+            // $user->save();
+            $user_id = Auth::id();
+            DB::table('users')->where('id', $user_id)->update(['point'=> DB::raw('point+1')]);
+
             return $existingGoal;
         }
+
+        
 
         return "Goal not found.";
     }
