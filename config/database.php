@@ -1,9 +1,11 @@
+
 <?php
 
 use Illuminate\Support\Str;
 
+$DATABASE_URL=parse_url("postgres://kzytavrntxpywr:5519a6464c96b54d0a6b07d0b6b72ff9d4f68b2b6db26c53e55d836ff2cc725e@ec2-35-168-80-116.compute-1.amazonaws.com:5432/ddmvk5fiivs7ho");
 return [
-
+    
     /*
     |--------------------------------------------------------------------------
     | Default Database Connection Name
@@ -14,7 +16,7 @@ return [
     | you may use many connections at once using the Database library.
     |
     */
-
+    
     // 'default' => env('DB_CONNECTION', 'mysql'),
     'default' => env('DB_CONNECTION', 'pgsql'),
     /*
@@ -45,12 +47,12 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            // 'url' => env('DATABASE_URL'),
+            'host' => $DATABASE_URL["host"],
+            'port' => $DATABASE_URL["port"],
+            'database' => ltrim($DATABASE_URL["path"], "/"),
+            'username' => $DATABASE_URL["user"],
+            'password' =>$DATABASE_URL["pass"],
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
