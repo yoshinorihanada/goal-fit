@@ -15,10 +15,10 @@ class ChatRoomSeeder extends Seeder
     public function run()
     {
         DB::table('chat_rooms')->insert([
-            'name' => 'English room'
+            'name' => 'My Family'
         ]);
         DB::table('chat_rooms')->insert([
-            'name' => 'Japanese room'
+            'name' => 'My friends'
         ]);
         
 

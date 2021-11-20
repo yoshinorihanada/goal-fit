@@ -6,24 +6,23 @@
             </h2>
         </template>
 
-        <!-- <div class="py-12">
+        <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <Todo />
+                    <point-view :point="point" @pointchanged="getPoint"/>
                 </div>
             </div>
-        </div> -->
+        </div>
 
         <div class="goalListContainer">
             <div class="heading">
                
-                <add-goal-form 
-                v-on:reloadlist="getList()"/>
+                <add-goal-form @reloadlist="getList" />
                 
 
             </div>
             <list-view :goals="goals"
-            v-on:reloadlist="getList()"/>
+            @reloadlist="getList"/>
            
         </div>
     </app-layout>
@@ -32,26 +31,40 @@
 <script>
     import { defineComponent } from 'vue'
     import AppLayout from '@/Layouts/AppLayout.vue'
-    import Todo from './Todo.vue'
-    import addGoalForm from "./addGoalForm.vue"
+    import PointView from './pointView.vue'
+    import AddGoalForm from "./addGoalForm.vue"
     import ListView from './listView.vue'
 
     export default defineComponent({
         components: {
             AppLayout,
-            addGoalForm,
+            PointView,
+            AddGoalForm,
             ListView
         } ,
         data: function (){
             return {
-                goals: []
+                goals: [],
+                point: 0
             }
         },
         methods: {
             getList(){
                 axios.get('goals')
                 .then( response => {
-                    this.goals = response.data
+                    this.goals = response.data;
+                    
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+            },
+            getPoint(){
+                
+                axios.get('point')
+                .then( response => {
+                    this.point = response.data;
+                    
                 })
                 .catch(error => {
                     console.log(error);
@@ -60,6 +73,7 @@
         },
         created(){
             this.getList();
+            this.getPoint();
         }
     })
 </script>

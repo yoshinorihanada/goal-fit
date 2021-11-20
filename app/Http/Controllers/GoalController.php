@@ -5,17 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Goal;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class GoalController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
+     * Display a listing of all the user's goal.
+     * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Goal::orderBy('created_at', 'DESC')->get();
+        // $goals = $request->user()->tasks()->get();
+        // return Goal::with('user')->orderBy('created_at', 'DESC')->get();
+        // $user = auth()->user();
+        $user = Auth::user();
+        return $user->goals()->get();
     }
 
     /**
@@ -37,6 +42,7 @@ class GoalController extends Controller
     public function store(Request $request)
     {
         $newGoal = new Goal;
+        $newGoal->user_id = Auth::id();
         $newGoal->name = $request->goal["name"];
         $newGoal->due_date = $request->goal["dueDate"];
         $newGoal->save();
