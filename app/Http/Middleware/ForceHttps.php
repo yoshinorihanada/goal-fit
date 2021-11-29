@@ -17,9 +17,12 @@ class ForceHttps
      */
     public function handle(Request $request, Closure $next)
     {
-        if (\App::environment(['production']) && $_SERVER["HTTP_X_FORWARDED_PROTO"] != 'https') {
+        // if (App::environment(['production']) && $_SERVER["HTTP_X_FORWARDED_PROTO"] != 'https') {
+        //     return redirect()->secure($request->getRequestUri());
+        // }
+        if (!$request->secure() && env('APP_ENV') === 'production') {
             return redirect()->secure($request->getRequestUri());
-        }
+            }
         return $next($request);
     }
 }
