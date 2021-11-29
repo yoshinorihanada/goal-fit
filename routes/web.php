@@ -55,3 +55,8 @@ Route::middleware('auth:sanctum')->prefix('/goal')->group(function(){
 //point routes
 Route::middleware('auth:sanctum')->get('/point', [UserController::class, 'showPoint']);
 Route::middleware('auth:sanctum')->put('/point', [UserController::class, 'updatePoint']);
+
+if (config('app.env') === 'production' or config('app.env') === 'staging') {
+    // asset()やurl()がhttpsで生成される
+    URL::forceScheme('https');
+}
