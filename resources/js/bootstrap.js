@@ -25,8 +25,8 @@ window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
-    key: process.env.MIX_PUSHER_APP_KEY,
-    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+    key: "7839f9f0265a9f1b4754",
+    cluster: "ap3",
     forceTLS: true
 
     //keyとclusterをdeploy時に変更
