@@ -50,6 +50,7 @@ Route::middleware('auth:sanctum')->prefix('/goal')->group(function(){
         Route::put('/{id}',[GoalController::class, 'update']);
         Route::delete('/{id}',[GoalController::class, 'destroy']);
     }
+    
 );
 
 //point routes
