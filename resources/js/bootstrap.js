@@ -25,16 +25,9 @@ window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
-    key: "7839f9f0265a9f1b4754",
-    cluster: "ap3",
+    key: process.env.MIX_PUSHER_APP_KEY,
+    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     forceTLS: true
 
-<<<<<<< HEAD
-    //keyとclusterをdeploy時に変更
-    //git push じにはいかに書き換える
-    // key: process.env.MIX_PUSHER_APP_KEY,
-    // cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-=======
     //デプロイ時はここにpusherのkey,とクラスタをhardcode
->>>>>>> b3fdf57d6662d7746008302cbf8288a7b0dd00e2
 });
