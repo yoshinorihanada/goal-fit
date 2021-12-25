@@ -2,8 +2,8 @@
 Goal-fit
 ## About Goal-fit
 Goal-fit is a fitness task list chat application for supporting people to perform physical exercise regularly to stay fit and healthy. 
-## URL
-https://goal-fit.herokuapp.com/
+<!-- ## URL
+https://goal-fit.herokuapp.com/ -->
 ## Acoount for testing
 Email: test@gmail.com \
 Password: testtest
