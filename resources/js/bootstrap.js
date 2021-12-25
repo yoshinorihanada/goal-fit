@@ -34,6 +34,6 @@ window.Echo = new Echo({
     broadcaster: 'pusher',
     cluster: "ap3",
     secret: process.env.PUSHER_SECRET,
-    key: process.env.MIX_PUSHER_APP_KEY,
-    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+    key: process.env.PUSHER_APP_KEY,
+    cluster: process.env.PUSHER_APP_CLUSTER,
 });
