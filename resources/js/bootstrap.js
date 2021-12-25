@@ -32,7 +32,8 @@ window.Echo = new Echo({
     //keyとclusterをdeploy時に変更
     //git push じにはいかに書き換える
     broadcaster: 'pusher',
-    forceTLS: true,
-    key: process.env.PUSHER_APP_KEY,
-    cluster: process.env.PUSHER_APP_CLUSTER,
+    cluster: "ap3",
+    secret: process.env.PUSHER_SECRET,
+    key: process.env.MIX_PUSHER_APP_KEY,
+    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 });
